@@ -1,0 +1,138 @@
+
+.File-lib-navi {
+  position: relative;
+  width: 100%;
+  background-color: #888888;
+  padding: 0px;
+}
+
+.File-lib-navi-icon {
+  display: inline-block;
+  padding: 7px 15px 3px 15px;
+  cursor: pointer;
+  margin: 0px;
+  transition: 0.2s;
+  vertical-align: middle;
+}
+.File-lib-navi-icon:hover {
+  background-color: #9e9e9e;
+}
+.File-lib-navi-icon img {
+  width: 15px;
+}
+
+.File-lib-navi-search {
+  position: absolute;
+  right: 0px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0px;
+  transition: 0.2s;
+  padding: 0px;
+  vertical-align: middle;
+}
+.File-lib-navi-search:hover {
+  background-color: #9e9e9e;
+}
+.File-lib-navi-search img {
+  width: 15px;
+  vertical-align: middle;
+  padding: 8px 15px 7px 15px;
+}
+.File-lib-navi-search-text {
+  display: inline-block;
+  background-color: #eeeeee;
+  color: #66666;
+  height: 100%;
+  margin: 0px;
+  border: none;
+  vertical-align: middle;
+  transition: 0.3s;
+  padding: 8px 0px 8px 0px;
+}
+
+.File-lib-tree {
+  position: absolute;
+  display: inline-block;
+  width: 250px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  height: calc(100% - 32px);
+  background-color: #f9f9f9;
+}
+
+.File-lib-tree-folder {
+  display: inline-block;
+  padding: 3px 16px 3px 8px;
+  color: #666666;
+  vertical-align: middle;
+  cursor: default;
+  margin: 0px;
+  white-space: nowrap;
+  user-select: none;
+}
+.File-lib-tree-folder:hover {
+  background-color: #eaeaea;
+}
+.File-lib-tree-folder img {
+  width: 13px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.File-lib-tree-folder-child {
+  padding-left: 18px;
+}
+.File-lib-tree-open {
+  font-weight: 700;
+  padding-right: 8px;
+}
+
+.File-lib-list {
+  position: absolute;
+  display: inline-block;
+  left: 250px;
+  width: calc(100% - 252px);
+  overflow-x: scroll;
+  overflow-y: scroll;
+  height: calc(100% - 32px);
+  background-color: #fbfbfb;
+}
+
+.File-lib-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  user-select: none;
+}
+.File-lib-list-table tr {
+  cursor: default;
+}
+.File-lib-list-table tr:hover {
+  background-color: #f0f0f0;
+}
+.File-lib-list-table th {
+  background-color: #dddddd;
+  border-bottom: 1px solid #bbbbbb;
+  color: #666666;
+  padding: 4px 14px;
+  cursor: default;
+}
+.File-lib-list-table td {
+  padding: 4px 14px;
+  border-bottom: 1px solid #dddddd;
+  color: #444444;
+}
+.File-lib-list-icon {
+  width: 17px;
+  vertical-align: middle;
+}
+.File-lib-list-kind {
+  width: 15px;
+  text-align: center;
+}
+.File-lib-list-name {
+  text-align: left;
+}
+.File-lib-list-status {
+  text-align: right;
+  width: 60px;
+}

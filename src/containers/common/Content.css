@@ -1,0 +1,8 @@
+.Content {
+  position: fixed;
+  top: 41px;
+  left: 181px;
+  width: calc(100% - 181px);
+  height: calc(100% - 39px);
+  background-color: #ffffff;
+}

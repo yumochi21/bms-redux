@@ -1,0 +1,57 @@
+.Menu {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  display: block;
+  width: 180px;
+  height: 100%;
+  color: #666666;
+  font-weight: 100;
+  border-right: 1px solid #dddddd;
+}
+
+.Menu-title {
+  text-align: center;
+  padding-top: 12px;
+  padding-bottom: 18px;
+  font-size: 13px;
+}
+
+.Menu-element {
+  display: block;
+  padding: 6px 24px 6px 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.1s;
+  user-select: none;
+}
+.Menu-element:hover {
+  background-color: #eeeeee;
+}
+
+.Menu-element-selected {
+  background-color: #eeeeee;
+  border-right: 2px solid #0288d1;
+}
+
+.Menu-header {
+  position: relative;
+  font-weight: 700;
+  background-color: #e8e8e8;
+}
+.Menu-header-accordion {
+  display: inline-block;
+  position: absolute;
+  text-decoration: none;
+  color: #666666;
+  top: 6px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.Sub-menu {
+  padding-left: 22px;
+}

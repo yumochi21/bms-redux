@@ -1,0 +1,28 @@
+.Button {
+  min-width: 80px;
+  padding: 8px 18px;
+  background-color: #455a64;
+  color: #ffffff;
+  border: 0px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.Flat-button:hover {
+  background-color: #546e7a;
+}
+.Flat-button:active {
+  background-color: #607d8b;
+}
+
+.Emergency-button {
+  background-color: #bf360c;
+}
+.Emergency-button:hover {
+  background-color: #d84315;
+}
+.Emergency-button:active {
+  background-color: #e64a19;
+}

@@ -1,0 +1,14 @@
+.Logout {
+  position: absolute;
+  padding: 4px 6px;
+  right: 10px;
+  text-decoration: none;
+  color: #666666;
+  display: inline-block;
+  transition: 0.2s;
+}
+.Logout:hover {
+  background-color: #bbbbbb;
+  color: #ffffff;
+  border-radius: 3px;
+}
