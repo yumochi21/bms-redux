@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import actions from '../actions'
-import Menu from './menu/Menu.js';
-import './common/Common.css';
+import Menu from './menu/Menu'
+import Header from './header/Header'
+import Content from './common/Content'
+import './common/Common.css'
 
 class App extends Component {
 
@@ -37,11 +39,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/*<Header />*/}
+        <Header />
         <Menu menus={this.props.menus} actions={this.props.actions} title="Menu" />
-        {/*<Content>
-          {this.state.page}
-        </Content>*/}
+        <Content>
+          {this.props.pager.page}
+        </Content>
       </div>
     );
   }
@@ -49,7 +51,8 @@ class App extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    menus: state.menus
+    menus: state.menus,
+    pager: state.pager
   }
 }
 

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './Header.css';
 import Logout from '../login/Logout.js';
 
-import CommonLogic from '../logic/common/CommonLogic.js';
+import CommonLogic from '../../logic/common/CommonLogic.js';
 
 class Header extends Component {
 

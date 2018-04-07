@@ -19,6 +19,7 @@ class MenuGroup extends Component {
                      menuObj={subMenu}
                      key={index}
                      selectMenu={this.props.selectMenu}
+                     changePage={this.props.changePage}
                />
       }
     )
@@ -71,11 +72,13 @@ class SubMenu extends Component {
   static propTypes = {
     groupId: PropTypes.string.isRequired,
     menuObj: PropTypes.object.isRequired,
-    selectMenu: PropTypes.func.isRequired
+    selectMenu: PropTypes.func.isRequired,
+    changePage: PropTypes.func.isRequired
   }
 
   handleClick = () => {
     this.props.selectMenu(this.props.groupId, this.props.menuObj.serialNo)
+    this.props.changePage(this.props.groupId, this.props.menuObj.serialNo)
   }
 
   render() {
@@ -99,7 +102,7 @@ class Menu extends Component {
   }
 
   render(props) {
-    const { menus: menus, actions: {menu : actions}} = this.props
+    const { menus: menus, actions: {menu : actions, pager: pager}} = this.props
     return (
       <div className="Menu">
         <div className="Menu-title">{this.props.title}</div>
@@ -109,7 +112,9 @@ class Menu extends Component {
                       menuObj={menu}
                       key={menu.groupId}
                       selectMenu={actions.selectMenu}
-                      selectMenuHeader={actions.selectMenuHeader} />
+                      selectMenuHeader={actions.selectMenuHeader}
+                      changePage={pager.changePage}
+                    />
           )
         }
       </div>

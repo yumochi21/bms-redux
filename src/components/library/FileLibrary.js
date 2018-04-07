@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import FlatButton from '../form/Button.js';
+import FlatButton from '../../containers/form/Button.js';
 
 import './FileLibrary.css';
 

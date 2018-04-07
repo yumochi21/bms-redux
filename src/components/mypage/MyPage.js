@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './MyPage.css';
 
-import CommonLogic from '../logic/common/CommonLogic.js';
+import CommonLogic from '../../logic/common/CommonLogic.js';
 
 class MyPage extends Component {
   render() {

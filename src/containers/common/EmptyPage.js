@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import './Common.css'
 import './EmptyPage.css';
 
-import FlatButton, {EmergencyButton} from '../form/Button.js';
-
-
 class EmptyPage extends Component {
 
   constructor(props) {
