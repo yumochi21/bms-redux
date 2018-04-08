@@ -4,91 +4,22 @@ import FlatButton from '../../containers/form/Button.js';
 
 import './FileLibrary.css';
 
-const folderTreeObj = {
-  id: '1',
-  name: 'フォルダ１',
-  subFolder: [
-    {id: '1', name: 'フォルダ２'},
-    {
-      id: '1',
-      name: 'フォルダ名',
-      subFolder: [
-        {id: '1', name: 'フォルダ名',
-        subFolder: [
-          {id: '1', name: 'フォルダ名'},
-          {id: '1', name: 'フォルダ名',
-          subFolder: [
-            {id: '1', name: 'フォルダ名'},
-            {id: '1', name: 'フォルダ名',
-            subFolder: [
-              {id: '1', name: 'フォルダ名'},
-              {id: '1', name: 'フォルダ名',
-              subFolder: [
-                {id: '1', name: 'フォルダ名'},
-                {id: '1', name: 'フォルダ名',
-                subFolder: [
-                  {id: '1', name: 'フォルダ名'},
-                  {id: '1', name: 'フォルダ名'}
-                ]}
-              ]}
-            ]}
-          ]}
-        ]},
-        {id: '1', name: 'フォルダ名'}
-      ]
-    },
-    {id: '1', name: 'フォルダ名'},
-    {id: '1', name: 'フォルダ名'},
-    {id: '1', name: 'フォルダ名'},
-    {id: '1', name: 'フォルダ名'},
-    {id: '1', name: 'フォルダ名'},
-    {id: '1', name: 'フォルダ名'},
-    {id: '1', name: 'フォルダ名'},
-    {id: '1', name: 'フォルダ名'},
-    {id: '1', name: 'フォルダ名'},
-    {id: '1', name: 'フォルダ名'},
-    {id: '1', name: 'フォルダ名'}
-  ]
-}
-
-const fileList = [
-  {fileId: 'asgaga', fileName: 'ファイル１', updateDate: '2017/01/21 11:11:11', updateUser: '望月由登', fileSize: '124MB', isFile: false},
-  {fileId: 'asgaga', fileName: 'ファイル１', updateDate: '2017/01/21 11:11:11', updateUser: '望月由登', fileSize: '124MB', isFile: false},
-  {fileId: 'asgaga', fileName: 'ファイル１', updateDate: '2017/01/21 11:11:11', updateUser: '望月由登', fileSize: '124MB', isFile: false},
-  {fileId: 'asgaga', fileName: 'ファイル１', updateDate: '2017/01/21 11:11:11', updateUser: '望月由登', fileSize: '124MB', isFile: true},
-  {fileId: 'asgaga', fileName: 'ファイル１', updateDate: '2017/01/21 11:11:11', updateUser: '望月由登', fileSize: '124MB', isFile: true},
-  {fileId: 'asgaga', fileName: 'ファイル１', updateDate: '2017/01/21 11:11:11', updateUser: '望月由登', fileSize: '124MB', isFile: true},
-  {fileId: 'asgaga', fileName: 'ファイル１', updateDate: '2017/01/21 11:11:11', updateUser: '望月由登', fileSize: '124MB', isFile: true},
-  {fileId: 'asgaga', fileName: 'ファイル１', updateDate: '2017/01/21 11:11:11', updateUser: '望月由登', fileSize: '124MB', isFile: true},
-  {fileId: 'asgaga', fileName: 'ファイル１', updateDate: '2017/01/21 11:11:11', updateUser: '望月由登', fileSize: '124MB', isFile: true}
-]
-
 class FileLib extends Component {
-  /*
-  props
-   - {}
-  */
-
-  constructor(props) {
-    super();
-  }
 
   render() {
+    const {filelib: filelib, actions: actions} = this.props
+    console.log(actions)
     return (
       <div className="File-lib">
         <FileLibNavi />
-        <FileLibTree folderTreeObj={folderTreeObj} />
-        <FileLibList fileList={fileList} />
+        <FileLibTree folderTreeObj={filelib.fileTree} actions={actions} />
+        <FileLibList fileList={filelib.fileList} actions={actions} />
       </div>
     )
   }
 }
 
 class FileLibNavi extends Component {
-  /*
-  props
-   - {}
-  */
 
   constructor(props) {
     super();
@@ -141,14 +72,6 @@ class FileLibNavi extends Component {
 }
 
 class FileLibTree extends Component {
-  /*
-  props
-   - {Object} folderTreeObj
-  */
-
-  constructor(props) {
-    super();
-  }
 
   render() {
     return (
@@ -156,19 +79,14 @@ class FileLibTree extends Component {
         <FileLibTreeFolder
           id={this.props.folderTreeObj.id}
           name={this.props.folderTreeObj.name}
-          subFolder={this.props.folderTreeObj.subFolder} />
+          subFolder={this.props.folderTreeObj.subFolder}
+          actions={this.props.actions} />
       </div>
     )
   }
 }
 
 class FileLibTreeFolder extends Component {
-  /*
-  props
-   - {String} id
-   - {String} name
-   - {Object[]} subFolder
-  */
 
   constructor(props) {
     super();
@@ -200,7 +118,13 @@ class FileLibTreeFolder extends Component {
         display: 'block'
       }
     })
-    alert();
+
+    // TODO APIで取得
+    const fileList = [
+      {fileId: 'file1', fileName: 'ファイル１', updateDate: '2017/01/21 11:11:11', updateUser: '望月由登', fileSize: '124MB', isFile: false, selected: false},
+      {fileId: 'file8', fileName: 'ファイル９', updateDate: '2017/01/21 11:11:11', updateUser: '望月由登', fileSize: '124MB', isFile: true, selected: false}
+    ]
+    this.props.actions.filelib.openFoler(fileList)
   }
 
   showFolderMenu(event) {
@@ -232,7 +156,7 @@ class FileLibTreeFolder extends Component {
               {
                 this.props.subFolder.map(
                   subFolder => {
-                    return <FileLibTreeFolder id={subFolder.id} name={subFolder.name} subFolder={subFolder.subFolder} />
+                    return <FileLibTreeFolder id={subFolder.id} name={subFolder.name} subFolder={subFolder.subFolder} actions={this.props.actions} />
                   }
                 )
               }
@@ -277,7 +201,7 @@ class FileLibList extends Component {
             {
               this.props.fileList.map(
                 file => {
-                  return <FileLibListRow fileObj={file} />
+                  return <FileLibListRow fileObj={file} actions={this.props.actions} />
                 }
               )
             }
@@ -301,10 +225,10 @@ class FileLibListRow extends Component {
     }
     this.downloadFile = this.downloadFile.bind(this);
     this.showFileMenu = this.showFileMenu.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   downloadFile(event) {
-    console.log(this.state.fileId);
     alert(this.state.fileId);
   }
 
@@ -314,9 +238,13 @@ class FileLibListRow extends Component {
     event.preventDefault();
   }
 
+  handleClick(event) {
+    this.props.actions.filelib.selectFile(this.props.fileObj.fileId)
+  }
+
   render() {
     return (
-      <tr onDoubleClick={this.downloadFile} onContextMenu={this.showFileMenu}>
+      <tr onClick={this.handleClick} onDoubleClick={this.downloadFile} onContextMenu={this.showFileMenu} className={this.props.fileObj.selected ? 'File-lib-list-selected' : null}>
         <td className="File-lib-list-kind">
           {
             this.props.fileObj.isFile ?
@@ -326,7 +254,7 @@ class FileLibListRow extends Component {
           }
         </td>
         <td className="File-lib-list-name">{this.props.fileObj.fileName}</td>
-        <td className="File-lib-list-status" style={{width: '130px'}}>{this.props.fileObj.updateDate}</td>
+        <td className="File-lib-list-status" style={{width: '150px'}}>{this.props.fileObj.updateDate}</td>
         <td className="File-lib-list-status">{this.props.fileObj.updateUser}</td>
         <td className="File-lib-list-status">{this.props.fileObj.fileSize}</td>
       </tr>

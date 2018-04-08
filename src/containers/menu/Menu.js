@@ -4,6 +4,35 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import './Menu.css';
 
+class Menu extends Component {
+
+  static propTypes = {
+    menus: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired,
+    actions: PropTypes.object.isRequired
+  }
+
+  render(props) {
+    const { menus: menus, actions: {menu : actions, pager: pager}} = this.props
+    return (
+      <div className="Menu">
+        <div className="Menu-title">{this.props.title}</div>
+        {
+          this.props.menus.map(
+            menu => <MenuGroup
+                      menuObj={menu}
+                      key={menu.groupId}
+                      selectMenu={actions.selectMenu}
+                      selectMenuHeader={actions.selectMenuHeader}
+                      changePage={pager.changePage}
+                    />
+          )
+        }
+      </div>
+    )
+  }
+}
+
 class MenuGroup extends Component {
 
   static propTypes = {
@@ -90,35 +119,6 @@ class SubMenu extends Component {
         {this.props.menuObj.label}
       </a>
     );
-  }
-}
-
-class Menu extends Component {
-
-  static propTypes = {
-    menus: PropTypes.array.isRequired,
-    title: PropTypes.string.isRequired,
-    actions: PropTypes.object.isRequired
-  }
-
-  render(props) {
-    const { menus: menus, actions: {menu : actions, pager: pager}} = this.props
-    return (
-      <div className="Menu">
-        <div className="Menu-title">{this.props.title}</div>
-        {
-          this.props.menus.map(
-            menu => <MenuGroup
-                      menuObj={menu}
-                      key={menu.groupId}
-                      selectMenu={actions.selectMenu}
-                      selectMenuHeader={actions.selectMenuHeader}
-                      changePage={pager.changePage}
-                    />
-          )
-        }
-      </div>
-    )
   }
 }
 

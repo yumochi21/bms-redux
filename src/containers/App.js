@@ -6,7 +6,12 @@ import actions from '../actions'
 import Menu from './menu/Menu'
 import Header from './header/Header'
 import Content from './common/Content'
+import { PAGE_ID } from '../reducers/pager/pager'
 import './common/Common.css'
+
+import EmptyPage from '../containers/common/EmptyPage.js'
+import MyPage from '../components/mypage/MyPage.js'
+import FileLib from '../components/library/FileLibrary.js'
 
 class App extends Component {
 
@@ -37,12 +42,25 @@ class App extends Component {
   }
 
   render() {
+    let page = <EmptyPage />
+    console.log(this.props.pager.page + '/' + PAGE_ID.FILE_LIB)
+    switch (this.props.pager.page) {
+      case PAGE_ID.EMPTY_PAGE:
+        page = <EmptyPage />
+        break
+      case PAGE_ID.FILE_LIB:
+        page = <FileLib filelib={this.props.filelib} actions={this.props.actions} />
+        break
+      default:
+        page = <EmptyPage />
+        break
+    }
     return (
       <div>
         <Header />
         <Menu menus={this.props.menus} actions={this.props.actions} title="Menu" />
         <Content>
-          {this.props.pager.page}
+          { page }
         </Content>
       </div>
     );
@@ -52,7 +70,8 @@ class App extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     menus: state.menus,
-    pager: state.pager
+    pager: state.pager,
+    filelib: state.filelib
   }
 }
 

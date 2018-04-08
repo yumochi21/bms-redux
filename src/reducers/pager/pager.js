@@ -6,14 +6,19 @@ import EmptyPage from '../../containers/common/EmptyPage.js'
 import MyPage from '../../components/mypage/MyPage.js'
 import FileLib from '../../components/library/FileLibrary.js'
 
+const PAGE_ID = {
+  EMPTY_PAGE: 'EMPTY_PAGE',
+  FILE_LIB: 'FILE_LIB'
+}
+
 const initialState = {
-  page: <EmptyPage />
+  page: PAGE_ID.EMPTY_PAGE
 }
 
 const PageStore = {
   ptl: {
-    1: <MyPage />,
-    2: <FileLib />
+    1: PAGE_ID.EMPTY_PAGE,
+    2: PAGE_ID.FILE_LIB
   }
 }
 
@@ -36,3 +41,4 @@ const changePage = (state, groupId, serialNo) => {
 }
 
 export default pager
+export { PAGE_ID }

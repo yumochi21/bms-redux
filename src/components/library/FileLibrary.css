@@ -134,5 +134,8 @@
 }
 .File-lib-list-status {
   text-align: right;
-  width: 60px;
+  width: 70px;
+}
+.File-lib-list-selected {
+  background-color: #eeeeee;
 }

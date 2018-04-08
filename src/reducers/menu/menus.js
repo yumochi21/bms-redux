@@ -8,7 +8,7 @@ const initialState = [
       {
         serialNo: 1,
         label: 'マイページ',
-        selected: true
+        selected: false
       },
       {
         serialNo: 2,
